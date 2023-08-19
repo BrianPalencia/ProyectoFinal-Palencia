@@ -40,6 +40,12 @@ button {
     cursor: pointer;
 }
 
+.error-message {
+    color: red;
+    margin-top: 10px;
+    display: none;
+}
+
 .body-page {
     font-family: sans-serif;
     margin: 0;

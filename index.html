@@ -8,13 +8,25 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body class="body-logueo">
-    <div class="contenedor-logueo">
+    <div class="contenedor-logueo" id="registro">
+        <h2>Registro</h2>
+        <form id="registroForm">
+            <input type="text" id="registroUsuario" placeholder="Usuario" required>
+            <input type="password" id="registroContraseña" placeholder="Contraseña" required>
+            <button type="submit">Registrarse</button>
+        </form>
+        <p>Si ya tienes una cuenta, <a href="#" id="iniciaSesionLink">inicia sesión</a></p>
+    </div>
+
+    <div class="contenedor-logueo" id="login" style="display: none;">
         <h2>Login</h2>
-        <form id="logueo">
-            <input type="text" id="usuario" placeholder="Usuario" required>
-            <input type="password" id="contraseña" placeholder="Contraseña" required>
+        <form id="loginForm">
+            <input type="text" id="loginUsuario" placeholder="Usuario" required>
+            <input type="password" id="loginContraseña" placeholder="Contraseña" required>
             <button type="submit">Ingresar</button>
         </form>
+        <p id="loginMensajeError" class="error-message" style="display: none;"></p>
+        <p>Si no tienes cuenta, <a href="#" id="registrateLink">Regístrate</a></p>
     </div>
     <script src="main.js"></script>
 </body>
