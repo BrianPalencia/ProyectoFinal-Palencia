@@ -148,7 +148,7 @@ function mostrarPopup() {
 
     setTimeout(function () {
         popup.style.display = "none";
-    }, 5000);
+    }, 10000);
 }
 
 
