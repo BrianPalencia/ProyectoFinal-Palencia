@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RentRide</title>
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
 </head>
+
 <body class="body-page">
-    <header>        
-        <div class="logo">            
+    <header>
+        <div class="logo">
             <img src="./assets/logo6.png" alt="logo">
             <h2 class="nombre">RentRide</h2>
-        </div>        
+        </div>
         <nav>
-            <a href="" class="nav-link">Vehiculos</a>
-            <a href="" class="nav-link">Cotiza</a>
+            <a href="#tarjetas" class="nav-link">Vehiculos</a>
+            <a href="#nosotros" class="nav-link">Nosotros</a>
         </nav>
     </header>
     <div class="contenedor-busqueda">
+        <P>Busca un Vehículo en específico</P>
         <input type="text" id="busqueda" placeholder="Buscar vehículo...">
     </div>
-    <div class="contenedor-tarjetas">
+    <div class="contenedor-tarjetas" id="tarjetas">
 
     </div>
-    <div>
+    <div class="cotizacion">
         <select id="seleccionarvehiculo">
             <option value="">Seleccionar vehículo</option>
             <option value="300">Kia Picanto</option>
@@ -32,6 +36,8 @@
             <option value="350">Suzuki Swift</option>
             <option value="390">Toyota Yaris</option>
             <option value="400">Toyota Corolla</option>
+            <option value="410">Kia Forte</option>
+            <option value="450">Volkswagen Virtus</option>
             <option value="500">Ford Ranger</option>
             <option value="500">Toyota Tacoma</option>
             <option value="520">Toyota RAV4</option>
@@ -41,6 +47,31 @@
         <button id="cotizarboton">Cotizar</button>
         <div id="cotizaciones" class="contenedor-cotizaciones"></div>
     </div>
+    <div class="nosotros" id="nosotros">
+        <article>
+            <h2>RentRide</h2>
+            <p><strong>RentRide: Tu Camino, Tu Elección</strong></p>
+            <p>Bienvenidos a RentRide, tu compañía de confianza para todas tus necesidades de alquiler de vehículos. En RentRide, creemos que cada viaje cuenta una historia única y emocionante, y nos enorgullecemos de ser parte de cada capítulo de tu trayecto. Nuestra pasión por brindar experiencias excepcionales de alquiler de autos nos impulsa a ser más que una simple empresa; somos tus compañeros de viaje.</p>
+            <p><strong>Nuestra Misión</strong></p>
+            <p>En RentRide, nuestra misión es transformar tus desplazamientos en aventuras inolvidables, ofreciéndote una flota diversa de vehículos de alta calidad que se adaptan a tus necesidades. Ya sea que estés explorando una nueva ciudad, realizando un viaje de negocios o disfrutando de unas merecidas vacaciones en familia, estamos aquí para garantizar que encuentres el vehículo perfecto para cada ocasión.</p>
+            <p><strong>Lo Que Nos Distingue</strong></p>
+            <p><strong>Variedad de Vehículos:</strong> En RentRide, entendemos que cada cliente es único. Por eso, ofrecemos una amplia selección de vehículos, desde compactos ágiles hasta lujosos SUV y elegantes sedanes, asegurando que encuentres el auto que se adapte a tu estilo y necesidades.</p>
+            <p><strong>Calidad Garantizada:</strong> La seguridad y la comodidad son nuestras principales prioridades. Cada vehículo en nuestra flota es rigurosamente inspeccionado y mantenido para garantizar un rendimiento óptimo en cada viaje.</p>
+            <p><strong>Experiencia Sencilla:</strong> Creemos que el proceso de alquiler debe ser fácil y sin complicaciones. Nuestra plataforma en línea intuitiva te permite reservar tu vehículo en pocos pasos, y nuestro amable equipo de atención al cliente está siempre disponible para responder a tus preguntas y ayudarte en lo que necesites.</p>
+            <p><strong>Flexibilidad:</strong> Entendemos que los planes pueden cambiar, por lo que ofrecemos opciones flexibles de alquiler que se ajustan a tus horarios y necesidades. Desde alquileres por horas hasta opciones a largo plazo, estamos aquí para adaptarnos a tus requerimientos.</p>
+            <p><strong>Atención Personalizada:</strong> En RentRide, no solo alquilas un auto; te proporcionamos una experiencia personalizada. Nuestro equipo está comprometido en brindarte asesoramiento y recomendaciones para asegurarnos de que tu viaje sea excepcional.</p>
+            <p>En RentRide, no se trata solo de alquilar un auto, sino de ser parte de tu viaje y ayudarte a crear recuerdos duraderos en el camino. Únete a nosotros y descubre cómo RentRide puede hacer que cada viaje sea una experiencia extraordinaria. Tu camino, tu elección.</p>
+        </article>
+    </div>
+    <div class="popup" id="popup">
+        <span class="popup-text">Recuerda que al alquilar un vehículo este tiene que ser devuelto en perfectas
+            condiciones, de no ser así habrá un cobro extra basado en el daño del vehículo.</span>
+    </div>
+    <footer>
+        <p>RentRide © 2023</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
     <script src="/main.js"></script>
 </body>
+
 </html>

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const registroForm = document.getElementById("registroForm");
     const loginForm = document.getElementById("loginForm");
     const registroDiv = document.getElementById("registro");
@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const registrateLink = document.getElementById("registrateLink");
     const loginMensajeError = document.getElementById("loginMensajeError");
 
-    registroForm.addEventListener("submit", function(event) {
+    registroForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
         const registroUsuario = document.getElementById("registroUsuario").value;
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
         loginDiv.style.display = "block";
     });
 
-    loginForm.addEventListener("submit", function(event) {
+    loginForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
         const loginUsuario = document.getElementById("loginUsuario").value;
@@ -38,13 +38,13 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    iniciaSesionLink.addEventListener("click", function(event) {
+    iniciaSesionLink.addEventListener("click", function (event) {
         event.preventDefault();
         registroDiv.style.display = "none";
         loginDiv.style.display = "block";
     });
 
-    registrateLink.addEventListener("click", function(event) {
+    registrateLink.addEventListener("click", function (event) {
         event.preventDefault();
         loginDiv.style.display = "none";
         registroDiv.style.display = "block";
@@ -57,27 +57,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    let vehiculos = localStorage.getItem("vehiculos");
-    if (!vehiculos) {
-        vehiculos = [
-            { nombre: "Kia Picanto", precio: 300 },
-            { nombre: "Volkswagen Polo", precio: 325 },
-            { nombre: "Hyundai Accent", precio: 335 },
-            { nombre: "Suzuki Swift", precio: 350 },
-            { nombre: "Toyota Yaris", precio: 390 },
-            { nombre: "Toyota Corolla", precio: 400 },
-            { nombre: "Kia Forte", precio: 410 },
-            { nombre: "Volkswagen Virtus", precio: 450 },
-            { nombre: "Ford Ranger", precio: 500 },
-            { nombre: "Toyota Tacoma", precio: 500 },
-            { nombre: "Toyota RAV4", precio: 520 },
-            { nombre: "Mitsubishi Challenger", precio: 550 }
-        ];
-        localStorage.setItem("vehiculos", JSON.stringify(vehiculos));
-    } else {
-        vehiculos = JSON.parse(vehiculos);
-    }
+document.addEventListener("DOMContentLoaded", async function () {
+    let vehiculos;
+    await fetch('vehiculos.json')
+        .then(response => response.json())
+        .then(data => {
+            vehiculos = data;
+
+        });
 
     const contenedorVehiculos = document.querySelector(".contenedor-tarjetas");
     const busqueda = document.getElementById("busqueda");
@@ -91,14 +78,18 @@ document.addEventListener("DOMContentLoaded", function() {
             const card = document.createElement("div");
             card.classList.add("tarjetas");
             card.innerHTML = `
+                <a href="${vehiculo.imagen}" class="glightbox">
+                <img src="${vehiculo.imagen}" alt="${vehiculo.nombre}">
+                </a>
                 <h3>${vehiculo.nombre}</h3>
                 <p>Precio de renta: Q. ${vehiculo.precio} al día</p>
             `;
-            
+
             if (!terminodeBusqueda || vehiculo.nombre.toLowerCase().includes(terminodeBusqueda)) {
                 contenedorVehiculos.appendChild(card);
             }
         });
+        const lightbox = GLightbox()
     }
 
     generarTarjetas();
@@ -125,12 +116,12 @@ document.addEventListener("DOMContentLoaded", function() {
             cotizacionItem.textContent = cotizacion.cotizacion;
             cotizacionesDiv.appendChild(cotizacionItem);
         });
-    }    
+    }
 
     function calcularCostoTotal() {
         const seleccionarPrecio = parseFloat(seleccionarVehiculo.value);
         const diasSeleccionados = parseInt(dias.value, 10);
-    
+
         if (!isNaN(seleccionarPrecio) && !isNaN(diasSeleccionados)) {
             const nombreVehiculo = seleccionarVehiculo.options[seleccionarVehiculo.selectedIndex].text;
             const costoTotal = seleccionarPrecio * diasSeleccionados;
@@ -139,15 +130,26 @@ document.addEventListener("DOMContentLoaded", function() {
             const cotizaciones = JSON.parse(localStorage.getItem("cotizaciones")) || [];
             cotizaciones.push({ cotizacion: cotizacionText });
             localStorage.setItem("cotizaciones", JSON.stringify(cotizaciones));
-    
+
             mostrarCotizaciones();
-    
+
             resultado.textContent = cotizacionText;
         } else {
             resultado.textContent = "Por favor, selecciona un vehículo y los días de alquiler.";
         }
     }
 });
+
+cotizarboton.addEventListener("click", mostrarPopup);
+
+function mostrarPopup() {
+    const popup = document.getElementById("popup");
+    popup.style.display = "block";
+
+    setTimeout(function () {
+        popup.style.display = "none";
+    }, 5000);
+}
 
 
 

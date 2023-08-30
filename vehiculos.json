@@ -1,0 +1,62 @@
+[
+    {
+        "nombre": "Kia Picanto",
+        "precio": 300,
+        "imagen": "/assets/Kia-Picanto-GT_HERO-16x9-2.webp"
+    },
+    {
+        "nombre": "Volkswagen Polo",
+        "precio": 325,
+        "imagen": "/assets/Volkswagen-Polo.jpg"
+    },
+    {
+        "nombre": "Hyundai Accent",
+        "precio": 335,
+        "imagen": "/assets/hyundai-accent.webp"
+    },
+    {
+        "nombre": "Suzuki Swift",
+        "precio": 350,
+        "imagen": "/assets/SWIFT.png"
+    },
+    {
+        "nombre": "Toyota Yaris",
+        "precio": 390,
+        "imagen": "/assets/Yaris.webp"
+    },
+    {
+        "nombre": "Toyota Corolla",
+        "precio": 400,
+        "imagen": "/assets/corolla.jpg"
+    },
+    {
+        "nombre": "Kia Forte",
+        "precio": 410,
+        "imagen": "/assets/Kia-Forte.webp"
+    },
+    {
+        "nombre": "Volkswagen Virtus",
+        "precio": 450,
+        "imagen": "/assets/Volkswagen-virtus.jpg"
+    },
+    {
+        "nombre": "Ford Ranger",
+        "precio": 500,
+        "imagen": "/assets/ford-ranger.webp"
+    },
+    {
+        "nombre": "Toyota Tacoma",
+        "precio": 500,
+        "imagen": "/assets/Toyota-Tacoma.webp"
+    },
+    {
+        "nombre": "Toyota RAV4",
+        "precio": 520,
+        "imagen": "/assets/Toyota-RAV4.jpg"
+    },
+    {
+        "nombre": "Mitsubishi Challenger",
+        "precio": 550,
+        "imagen": "/assets/mitsubishi-challenger.webp"
+    }
+]
