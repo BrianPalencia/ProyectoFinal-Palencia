@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", async function () {
     let vehiculos;
-    await fetch('vehiculos.json')
+    await fetch('./vehiculos.json')
         .then(response => response.json())
         .then(data => {
             vehiculos = data;
