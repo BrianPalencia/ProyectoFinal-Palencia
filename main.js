@@ -7,53 +7,61 @@ document.addEventListener("DOMContentLoaded", function () {
     const registrateLink = document.getElementById("registrateLink");
     const loginMensajeError = document.getElementById("loginMensajeError");
 
-    registroForm.addEventListener("submit", function (event) {
-        event.preventDefault();
+    if (registroForm) {
+        registroForm.addEventListener("submit", function (event) {
+            event.preventDefault();
 
-        const registroUsuario = document.getElementById("registroUsuario").value;
-        const registroContraseña = document.getElementById("registroContraseña").value;
+            const registroUsuario = document.getElementById("registroUsuario").value;
+            const registroContraseña = document.getElementById("registroContraseña").value;
 
-        const users = JSON.parse(localStorage.getItem("users")) || [];
-        users.push({ usuario: registroUsuario, contraseña: registroContraseña });
-        localStorage.setItem("users", JSON.stringify(users));
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+            users.push({ usuario: registroUsuario, contraseña: registroContraseña });
+            localStorage.setItem("users", JSON.stringify(users));
 
-        registroDiv.style.display = "none";
-        loginDiv.style.display = "block";
-    });
+            if(registroDiv) registroDiv.style.display = "none";
+            if(loginDiv) loginDiv.style.display = "block";
+        });
+    }
 
-    loginForm.addEventListener("submit", function (event) {
-        event.preventDefault();
+    if (loginForm) {
+        loginForm.addEventListener("submit", function (event) {
+            event.preventDefault();
 
-        const loginUsuario = document.getElementById("loginUsuario").value;
-        const loginContraseña = document.getElementById("loginContraseña").value;
+            const loginUsuario = document.getElementById("loginUsuario").value;
+            const loginContraseña = document.getElementById("loginContraseña").value;
 
-        const users = JSON.parse(localStorage.getItem("users")) || [];
-        const user = users.find(u => u.usuario === loginUsuario && u.contraseña === loginContraseña);
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+            const user = users.find(u => u.usuario === loginUsuario && u.contraseña === loginContraseña);
 
-        if (user) {
-            window.location.href = "page.html";
-        } else {
-            loginMensajeError.textContent = "Usuario o contraseña incorrectos. Por favor, intenta nuevamente.";
-            loginMensajeError.style.display = "block";
-        }
-    });
+            if (user) {
+                window.location.href = "page.html";
+            } else {
+                loginMensajeError.textContent = "Usuario o contraseña incorrectos. Por favor, intenta nuevamente.";
+                loginMensajeError.style.display = "block";
+            }
+        });
+    }
 
-    iniciaSesionLink.addEventListener("click", function (event) {
-        event.preventDefault();
-        registroDiv.style.display = "none";
-        loginDiv.style.display = "block";
-    });
+    if (iniciaSesionLink) {
+        iniciaSesionLink.addEventListener("click", function (event) {
+            event.preventDefault();
+            registroDiv.style.display = "none";
+            loginDiv.style.display = "block";
+        });
+    }
 
-    registrateLink.addEventListener("click", function (event) {
-        event.preventDefault();
-        loginDiv.style.display = "none";
-        registroDiv.style.display = "block";
-    });
+    if (registrateLink) {
+        registrateLink.addEventListener("click", function (event) {
+            event.preventDefault();
+            loginDiv.style.display = "none";
+            registroDiv.style.display = "block";
+        });
+    }
 
     const users = JSON.parse(localStorage.getItem("users")) || [];
     if (users.length > 0) {
-        registroDiv.style.display = "none";
-        loginDiv.style.display = "block";
+        if(registroDiv) registroDiv.style.display = "none";
+        if(loginDiv) loginDiv.style.display = "block";
     }
 });
 
@@ -68,6 +76,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const contenedorVehiculos = document.querySelector(".contenedor-tarjetas");
     const busqueda = document.getElementById("busqueda");
+    const cotizacionesDiv = document.getElementById("cotizaciones");
 
     function generarTarjetas() {
         contenedorVehiculos.innerHTML = '';
@@ -89,25 +98,27 @@ document.addEventListener("DOMContentLoaded", async function () {
                 contenedorVehiculos.appendChild(card);
             }
         });
-        const lightbox = GLightbox()
+        GLightbox() // <-- Libreria externa para ver las imagenes en galeria.
     }
 
-    generarTarjetas();
+    if (contenedorVehiculos) generarTarjetas();
 
-    busqueda.addEventListener("input", generarTarjetas);
+    if (busqueda) busqueda.addEventListener("input", generarTarjetas);
 
     const seleccionarVehiculo = document.getElementById("seleccionarvehiculo");
     const dias = document.getElementById("dias");
     const cotizarboton = document.getElementById("cotizarboton");
     const resultado = document.getElementById("resultado");
 
-    mostrarCotizaciones();
+    if (cotizacionesDiv) mostrarCotizaciones();
 
-    cotizarboton.addEventListener("click", calcularCostoTotal);
+    if (cotizarboton) {
+        cotizarboton.addEventListener("click", calcularCostoTotal);
+        cotizarboton.addEventListener("click", mostrarPopup);
+    }
 
     function mostrarCotizaciones() {
         const cotizaciones = JSON.parse(localStorage.getItem("cotizaciones")) || [];
-        const cotizacionesDiv = document.getElementById("cotizaciones");
         cotizacionesDiv.innerHTML = "";
 
         cotizaciones.forEach(cotizacion => {
@@ -139,8 +150,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 });
-
-cotizarboton.addEventListener("click", mostrarPopup);
 
 function mostrarPopup() {
     const popup = document.getElementById("popup");
